@@ -1,0 +1,12 @@
+# Credenciales: nunca se suben
+.env
+
+# Indice generado por build_index. Se regenera con: python -m src.build_index
+index/
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+.pytest_cache/
