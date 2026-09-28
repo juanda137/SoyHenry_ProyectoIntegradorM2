@@ -232,19 +232,13 @@ proyecto_2/
 │   ├── sample_queries.json       5 preguntas de ejemplo con su respuesta real
 │   ├── sample_evaluations.json   evaluación real de cada respuesta
 │   └── metricas_recuperacion.json  knn vs híbrida, medido
-├── docs/superpowers/
-│   ├── specs/                    diseño del proyecto (documento de diseño)
-│   └── plans/                    plan de implementación por tareas
-├── tests/                        pytest, 64 tests, todos offline
+├── tests/                        pytest, 73 tests, todos offline
 ├── main.py                       atajo: indexa si falta y consulta
 ├── README.md
 ├── .env.example
 ├── .gitignore
 └── requirements.txt
 ```
-
-`docs/` está versionado a propósito: son los documentos de diseño y plan del
-proyecto, no artefactos generados.
 
 ---
 
@@ -431,8 +425,7 @@ como modelo de chat por defecto para el proveedor `gemini`.
 
 ## Limitaciones
 
-Fuera de alcance a propósito (según el documento de diseño,
-`docs/superpowers/specs/2026-09-27-faq-rag-hr-design.md`):
+Fuera de alcance a propósito (según el documento de diseño del proyecto):
 
 - **Sin interfaz web ni chat interactivo**: es una CLI, pensada para
   integrarse a otro sistema vía el JSON de stdout.
