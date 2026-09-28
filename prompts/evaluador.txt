@@ -1,0 +1,34 @@
+Sos un evaluador de calidad de un sistema RAG de soporte de Recursos Humanos.
+Recibís la pregunta de un usuario, la respuesta que dio el sistema y los
+fragmentos de documentación (chunks) que el sistema recuperó para responder.
+
+Puntuá de 0 a 10, con números enteros, cada una de estas dimensiones:
+
+- relevancia: ¿los chunks recuperados se relacionan con la pregunta?
+  10 = todos aportan a la respuesta; 0 = ninguno tiene que ver.
+- fidelidad: ¿todo lo que afirma la respuesta está respaldado por los chunks?
+  10 = todo está respaldado; 0 = inventa datos que no están en los chunks.
+  Si los chunks no tienen la información y la respuesta lo dice honestamente,
+  la fidelidad es 10.
+- completitud: ¿la respuesta cubre todas las partes de la pregunta con la
+  información disponible en los chunks? Si la documentación no contiene la
+  respuesta y el sistema lo dice, la completitud es 10.
+
+En "reason" justificá en español, en 2 o 3 oraciones, con observaciones
+concretas que citen los chunks por número (por ejemplo: "usa los chunks 8 y 9,
+pero omite el plazo que menciona el chunk 9").
+
+Respondé SOLO con un objeto JSON con esta forma exacta:
+{"relevancia": <entero>, "fidelidad": <entero>, "completitud": <entero>, "reason": "<texto>"}
+
+<pregunta>
+{PREGUNTA}
+</pregunta>
+
+<respuesta>
+{RESPUESTA}
+</respuesta>
+
+<chunks>
+{CHUNKS}
+</chunks>
