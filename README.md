@@ -84,23 +84,28 @@ Beneficios de separar recuperar de generar:
    copy .env.example .env
    ```
 
+   En Linux/macOS: `cp .env.example .env`
+
    Y completar `GEMINI_API_KEY` (o `OPENAI_API_KEY`) dentro de `.env`.
 
    **b) Con variables de entorno**, sin archivo:
 
    ```bash
    # Linux / macOS
+   export LLM_PROVIDER=openai   # o gemini; elige el proveedor
    export GEMINI_API_KEY=tu-clave
    export OPENAI_API_KEY=tu-clave
    ```
 
    ```cmd
    :: Windows (cmd)
+   set LLM_PROVIDER=openai
    set GEMINI_API_KEY=tu-clave
    ```
 
    ```powershell
    # Windows (PowerShell)
+   $env:LLM_PROVIDER="openai"
    $env:GEMINI_API_KEY="tu-clave"
    ```
 
@@ -164,9 +169,16 @@ Salida real (recortada) para esa pregunta, tomada de
 Con el SDK de OpenAI en vez de Gemini, sólo cambia la clave y el proveedor:
 
 ```bash
+export LLM_PROVIDER=openai
 export OPENAI_API_KEY=your-key
 python main.py "¿Cómo solicito vacaciones?"
 ```
+
+Al cambiar de proveedor cambia también el modelo de embeddings, así que
+`main.py` reindexa solo la primera vez que lo notás: si ya existe
+`index/index.json` pero quedó hecho con el modelo del proveedor anterior,
+lo reconstruye automáticamente (y avisa por qué, por stderr) antes de
+responder.
 
 Otras opciones de `main.py` / `python -m src.query`:
 
@@ -190,6 +202,10 @@ Correr los tests (offline, no llaman a ninguna API):
 ```bash
 python -m pytest tests/ -v
 ```
+
+La primera corrida descarga el tokenizador de `tiktoken` (necesita conexión
+a internet una sola vez); después queda en caché local y las corridas
+siguientes son completamente offline.
 
 ---
 
@@ -279,6 +295,13 @@ efectivamente responden las preguntas de ejemplo tenían coseno ≥ 0.836, y la
 pregunta fuera de alcance no superaba 0.5211; el umbral quedó en el punto
 medio, redondeado). Se devuelven entre `TOP_K_MIN=2` y `TOP_K_MAX=5` chunks.
 
+**Este umbral está calibrado específicamente para `gemini-embedding-001`.**
+Con otro modelo de embeddings (por ejemplo `text-embedding-3-small` de
+OpenAI) la escala del coseno es distinta, así que `0.68` no es portable sin
+más: hay que recalibrarlo corriendo `python -m src.generar_ejemplos` con ese
+modelo y aplicando el mismo método A/B (comparar el coseno mínimo de los
+chunks que sí responden contra el máximo de la pregunta fuera de alcance).
+
 **El filtro por rango se combina con un mínimo de `TOP_K_MIN=2` chunks.**
 Cuando nada pasa el umbral —el caso real es la pregunta sobre la receta de
 la paella valenciana, con similitud máxima 0.52, bien por debajo de 0.68— el
@@ -347,6 +370,15 @@ Puntajes reales (`outputs/sample_evaluations.json`, con
 | dato exacto (días trasladables) | 7 |
 | dos partes (formatos + retención de nómina) | 10 |
 | fuera de alcance (paella valenciana) | 7 |
+
+**El 7 de la pregunta fuera de alcance no es un defecto de la respuesta.**
+Rechazar responder la receta de la paella es lo correcto ahí, y el prompt del
+evaluador ya lo puntúa así: `fidelidad` y `completitud` dan 10 (la respuesta
+no inventa nada y es tan completa y honesta como puede serlo un rechazo). Lo
+que baja el promedio es `relevancia` (0 en esta pregunta), que mide qué tan
+relacionados están los chunks recuperados con la pregunta — y ningún chunk
+del FAQ de HR habla de paella, así que esa relevancia es legítimamente baja.
+El score refleja eso, no un prompt más permisivo ni una respuesta peor.
 
 Cuando el juez responde un JSON inválido o incompleto, se reintenta una vez
 con otra temperatura (`TEMPERATURA_DE_REINTENTO=0.4`). Con `temperature=0`
