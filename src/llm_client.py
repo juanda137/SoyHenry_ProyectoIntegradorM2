@@ -90,7 +90,10 @@ def preguntar(cliente, mensajes, modelo, temperatura, formato_json=False):
         lambda: cliente["api"].chat.completions.create(**argumentos))
     eleccion = respuesta.choices[0]
     texto = eleccion.message.content or ""
-    if texto.strip() == "" and eleccion.finish_reason == "length":
+    # finish_reason "length" corta la respuesta a mitad de camino, con o sin
+    # texto parcial: un JSON o una respuesta a medias es tan inútil como uno
+    # vacío, y peor todavía, porque parece completo si no se revisa esto.
+    if eleccion.finish_reason == "length":
         raise ErrorDelModelo("El modelo agotó max_tokens (" + str(config.MAX_TOKENS) +
                              ") razonando y no llegó a responder. Subí MAX_TOKENS en src/config.py.")
     if texto.strip() == "":

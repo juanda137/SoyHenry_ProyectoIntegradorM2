@@ -82,6 +82,15 @@ def test_preguntar_explica_si_se_agoto_max_tokens():
         llm_client.preguntar(cliente, [], "modelo", 0)
 
 
+def test_preguntar_rechaza_texto_parcial_cortado_por_max_tokens():
+    # finish_reason "length" con texto no vacío: un JSON a medias, por
+    # ejemplo, que si no se detecta parece una respuesta completa.
+    cliente = cliente_de_chat_falso('{\n  "relevancia": 5,\n  "fidelidad": 10,\n  "completitud": 10,',
+                                    "length")
+    with pytest.raises(llm_client.ErrorDelModelo, match="max_tokens"):
+        llm_client.preguntar(cliente, [], "modelo", 0)
+
+
 def test_embeber_textos_pide_por_lotes(monkeypatch):
     monkeypatch.setattr(config, "TAMANO_DEL_LOTE", 2)
     pedidos = []

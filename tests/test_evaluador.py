@@ -74,14 +74,15 @@ def test_si_no_puede_evaluar_no_inventa_un_puntaje(monkeypatch):
 def test_json_truncado_por_max_tokens_reintenta_con_otra_temperatura(monkeypatch):
     # Forma real vista en la Tarea 8 (gemini-3.5-flash, temperatura 0): el
     # razonamiento se come el presupuesto de tokens y el JSON queda cortado
-    # antes de llegar a "reason".
-    truncado = '{\n  "relevancia": 5,\n  "fidelidad": 10,\n  "completitud": 10,'
+    # antes de llegar a "reason". Desde el fix de llm_client.preguntar, ese
+    # corte se detecta ahí mismo y se propaga como ErrorDelModelo (ya no
+    # llega un texto truncado a interpretar_evaluacion).
     temperaturas_usadas = []
 
     def preguntar_falso(cliente, mensajes, modelo, temperatura, formato_json=False):
         temperaturas_usadas.append(temperatura)
         if len(temperaturas_usadas) == 1:
-            return truncado
+            raise llm_client.ErrorDelModelo("El modelo agotó max_tokens (1200) razonando.")
         return evaluacion_en_json()
 
     monkeypatch.setattr(llm_client, "preguntar", preguntar_falso)

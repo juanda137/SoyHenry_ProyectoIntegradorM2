@@ -29,8 +29,11 @@ INTENTOS = 2   # si el juez responde algo inválido, se le pregunta una vez más
 # de escribir el JSON, y esos tokens de razonamiento a veces se comen casi
 # todo max_tokens: el texto queda cortado, por ejemplo
 #   '{\n  "relevancia": 5,\n  "fidelidad": 10,\n  "completitud": 10,'
-# A temperatura 0 esto es determinístico: reintentar con la misma pregunta
-# repite el mismo corte. Por eso el reintento usa otra temperatura.
+# (llm_client.preguntar ahora detecta esto y lanza ErrorDelModelo aunque el
+# texto no esté vacío). A temperatura 0 esto es determinístico: reintentar
+# con la misma pregunta repite el mismo corte. Por eso el reintento usa otra
+# temperatura. Es una segunda oportunidad, no una garantía: si el límite real
+# es MAX_TOKENS, cambiar la temperatura no lo agranda.
 TEMPERATURA_DE_REINTENTO = 0.4
 
 
