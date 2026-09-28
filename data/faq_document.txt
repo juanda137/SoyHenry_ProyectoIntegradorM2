@@ -1,0 +1,129 @@
+Bot para HR — Preguntas frecuentes
+
+La plataforma es un sistema de recursos humanos donde una empresa gestiona cuentas de acceso, vacaciones y ausencias, nómina, altas y bajas de empleados, integraciones con otras herramientas, seguridad de los datos y facturación. Esta guía está pensada para tres tipos de personas: empleados que consultan sus propios datos, responsables que aprueban solicitudes de su equipo, y administradores que configuran la cuenta completa. Está organizada por secciones temáticas, cada una con sus preguntas frecuentes y respuestas breves.
+
+# Sección: Cuenta y acceso
+
+P: ¿Cómo activo mi cuenta la primera vez?
+R: Cuando el administrador te da de alta, recibís un correo con un enlace de invitación. Ese enlace es válido durante 72 horas desde que se envía. Al abrirlo, la plataforma te pide crear una contraseña propia y confirmarla; con eso tu cuenta queda activa y podés iniciar sesión con tu correo y esa contraseña. Si dejás pasar las 72 horas, el enlace deja de funcionar y no podés usarlo. En ese caso simplemente pedile al administrador de tu cuenta que te envíe una nueva invitación.
+
+P: ¿Qué requisitos debe cumplir la contraseña?
+R: La contraseña de tu cuenta tiene que cumplir varios requisitos de seguridad. Debe tener como mínimo 12 caracteres, e incluir al menos una mayúscula, un número y un símbolo como #, % o guion. La plataforma no acepta contraseñas que no cumplan estas condiciones, y avisa qué falta cuando el formulario las rechaza. Además, por política de seguridad, la contraseña se cambia cada 180 días: quince días antes te llega un recordatorio por correo. Al elegir una nueva, no se pueden repetir las últimas 5 contraseñas usadas antes.
+
+P: ¿Cómo configuro el inicio de sesión único (SSO) con Microsoft Entra ID?
+R: Configurar el inicio de sesión único es una tarea reservada **sólo a administradores de la cuenta, plan Empresa**. Los pasos son estos:
+1. Ajustes > Seguridad > Inicio de sesión único.
+2. Elegir SAML 2.0.
+3. Copiar la URL de ACS y el identificador.
+4. En Entra ID, crear una aplicación empresarial y pegarlos.
+5. Subir el XML de metadatos de Entra ID.
+6. Probar con un usuario.
+7. Activar "Obligar SSO".
+Una vez activado ese último paso, todos los usuarios de la cuenta inician sesión exclusivamente a través de Microsoft Entra ID.
+
+P: ¿Qué hago si mi cuenta queda bloqueada?
+R: La plataforma bloquea tu cuenta automáticamente después de 5 intentos fallidos de inicio de sesión seguidos. El bloqueo dura 30 minutos, y durante ese tiempo el sistema rechaza cualquier intento aunque uses la contraseña correcta, hasta que se cumpla el plazo completo. Si necesitás acceder antes de que pasen los 30 minutos, no hace falta esperar: un administrador puede desbloquear tu cuenta manualmente desde la sección Personas, buscando tu perfil y eligiendo la opción correspondiente. Una vez desbloqueada, podés volver a intentar iniciar sesión con normalidad, usando tu contraseña habitual de siempre.
+
+P: ¿Puedo activar la verificación en dos pasos?
+R: Sí, podés activar la verificación en dos pasos desde tu perfil, en la sección de seguridad. La plataforma ofrece dos métodos para el segundo paso: una aplicación autenticadora, que genera códigos temporales, o un mensaje SMS al número de teléfono que tengas registrado. Podés elegir el que te resulte más cómodo, y cambiarlo más adelante si querés. Para la mayoría de los empleados esta verificación es opcional, pero para las cuentas con rol de administrador es obligatoria: no pueden iniciar sesión sin configurarla, porque manejan información sensible de toda la empresa.
+
+# Sección: Vacaciones y ausencias
+
+P: ¿Cómo solicito vacaciones?
+R: Solicitar vacaciones es un trámite simple que se hace en pocos pasos:
+1. Entrá a Ausencias > Nueva solicitud.
+2. Elegí el tipo de ausencia.
+3. Indicá las fechas de inicio y fin.
+4. Agregá un comentario, si querés (es opcional).
+5. Enviá la solicitud.
+Una vez enviada, la solicitud queda pendiente hasta que tu responsable directo la revisa y la aprueba o la rechaza. En cualquiera de los dos casos, recibís una notificación por correo avisándote la decisión final.
+
+P: ¿Cuántos días de vacaciones pendientes se pueden trasladar al año siguiente?
+R: Podés trasladar vacaciones pendientes al año siguiente bajo esta regla: **hasta 5 días; deben usarse antes del 31 de marzo; si no, se pierden**. La plataforma marca como vencidos los días trasladados apenas pasa esa fecha, y no hay forma de recuperarlos después. Es importante recordar que la empresa puede cambiar el límite de traslado en cualquier momento, según su propia política interna, así que conviene revisar las condiciones vigentes cada vez que empieza un año nuevo.
+
+P: ¿Puedo cancelar una solicitud de vacaciones que ya fue aprobada?
+R: Para cancelar una solicitud ya aprobada, la regla es esta: **sí, hasta 48 horas antes del inicio, desde Ausencias > Mis solicitudes > Cancelar; después hay que pedírselo al administrador de RR. HH.; los días vuelven al saldo**. Fuera de ese plazo de 48 horas no podés hacerlo directamente por tu cuenta, así que conviene revisar las fechas con anticipación antes de dar por confirmado cualquier cambio de planes personales o familiares.
+
+P: ¿Cómo registro una baja médica?
+R: Para registrar una baja médica, entrá a Ausencias > Nueva solicitud y elegí el tipo "Incapacidad médica" en lugar de vacaciones u otro tipo de ausencia. Después de crear la solicitud, tenés que adjuntar el certificado médico dentro de los 3 días hábiles siguientes; si no lo subís a tiempo, la solicitud queda marcada como incompleta. El archivo se acepta en formato PDF o JPG, con un tamaño máximo de 10 MB. Por privacidad, el motivo médico detallado sólo lo ve RR. HH.; tu responsable directo únicamente ve que estás de baja.
+
+P: ¿Qué pasa si mi responsable no aprueba la solicitud a tiempo?
+R: Si tu responsable no revisa la solicitud enseguida, la plataforma se encarga de recordárselo sola. A las 48 horas de creada la solicitud, si sigue pendiente, le llega un correo de recordatorio automático a tu responsable, sin que vos tengas que pedirlo. Si sigue sin responder, la solicitud no queda esperando para siempre: a los 5 días hábiles sin aprobación, el caso se escala automáticamente al administrador de RR. HH., que puede revisarla y decidir en su lugar, evitando que quede trabada indefinidamente.
+
+P: ¿Puedo ver el calendario de ausencias de mi equipo?
+R: Sí, la plataforma tiene una vista llamada Calendario del equipo, pensada para que puedas organizarte con tus compañeros de trabajo. Ahí ves, en formato mensual, qué días tiene ausencias programadas cada persona de tu equipo, incluyendo vacaciones, bajas médicas y otros permisos aprobados. Esto sirve, por ejemplo, para planificar reuniones o repartir tareas sabiendo quién va a estar disponible cada día. Por un tema de privacidad, los empleados ven las fechas marcadas pero no el motivo de la ausencia de sus compañeros.
+
+# Sección: Nómina
+
+P: ¿Dónde descargo mis recibos de nómina?
+R: Podés descargar tus recibos de nómina desde la sección Nómina > Mis recibos, disponible para cualquier empleado desde su propio perfil. Ahí aparece un listado con todos los recibos históricos, ordenados por mes, y podés descargar el que necesites con un solo clic. Los recibos del mes en curso quedan disponibles el último día hábil del mes, una vez que RR. HH. cierra la nómina correspondiente; antes de esa fecha todavía no aparecen en el listado, aunque el mes ya haya terminado.
+
+P: ¿En qué formatos se pueden exportar los recibos de nómina?
+R: En cuanto a los formatos disponibles: **el empleado descarga en PDF; los administradores exportan en bloque en CSV o en PDF dentro de un ZIP**. El PDF individual incluye todos los conceptos del recibo, como salario bruto, deducciones y neto a cobrar. El formato CSV en bloque, en cambio, está pensado para cargar los datos de muchos empleados a la vez en otro sistema contable externo, sin tener que abrir cada recibo por separado ni transcribir montos manualmente uno por uno.
+
+P: ¿Cuánto tiempo se conservan los recibos de nómina?
+R: Los recibos de nómina se conservan durante **10 años** desde su fecha de emisión, un plazo pensado para cumplir con las obligaciones legales de conservación de documentación laboral. Pasado ese plazo, se eliminan automáticamente del sistema, sin que haga falta ninguna acción manual de RR. HH. En cuanto al acceso posterior a la salida de la empresa, los ex empleados acceden 90 días después de la baja usando las mismas credenciales de siempre; pasado ese plazo, el acceso se cierra definitivamente.
+
+P: ¿Qué hago si encuentro un error en mi recibo?
+R: Si notás un error en tu recibo de nómina, dentro del propio recibo hay un botón "Reportar un problema" donde podés describir qué te parece incorrecto, por ejemplo un descuento que no reconocés. El equipo de RR. HH. recibe el reporte automáticamente y responde en un plazo de 5 días hábiles, ya sea confirmando el error o explicando por qué el monto es correcto. Un recibo ya emitido no se modifica directamente; cualquier corrección se aplica como un ajuste en la nómina siguiente.
+
+P: ¿Cómo cambio mi cuenta bancaria para el pago de la nómina?
+R: Para cambiar la cuenta donde recibís tu nómina, entrá a Perfil > Datos bancarios y cargá el nuevo número en formato IBAN, que la plataforma valida automáticamente antes de guardarlo. Como medida de seguridad, después de guardar el cambio te llega un código de verificación por correo o SMS, que tenés que ingresar para confirmar que fuiste vos quien hizo la modificación. En cuanto a los plazos, los cambios hechos antes del día 20 de cada mes aplican ese mismo mes; los posteriores se aplican en la nómina siguiente.
+
+# Sección: Gestión de empleados
+
+P: ¿Cómo doy de alta a un nuevo empleado?
+R: Dar de alta a un nuevo empleado es un proceso guiado, paso a paso:
+1. Entrá a Personas > Añadir empleado.
+2. Completá los datos personales, como nombre, correo y documento.
+3. Cargá los datos del contrato: tipo, fecha de inicio y puesto.
+4. Asigná el responsable directo de la persona.
+5. Enviá la invitación.
+Apenas se envía, el nuevo empleado recibe un correo con el enlace para activar su cuenta, y ya aparece en Personas con estado pendiente hasta que completa su primer inicio de sesión.
+
+P: ¿Puedo importar empleados de forma masiva?
+R: Sí, la plataforma permite importar empleados de forma masiva en lugar de cargarlos uno por uno, algo útil cuando una empresa recién empieza a usar el sistema. Para eso hay que descargar la plantilla CSV que ofrece la plataforma, completar una fila por empleado con los datos requeridos, y subir el archivo desde Personas > Importar. Cada archivo admite hasta 500 filas, así que si hay más empleados que eso hace falta dividir la carga. Antes de importar de verdad, la plataforma valida el archivo y muestra qué filas tienen errores.
+
+P: ¿Cómo gestiono la baja de un empleado?
+R: Para dar de baja a un empleado, entrá a Personas, abrí su perfil y elegí la opción Iniciar baja. Ahí indicás la fecha efectiva, es decir, el último día en el que la persona sigue siendo parte activa de la empresa. El acceso del empleado a la plataforma se desactiva automáticamente a las 23:59 de ese día, sin que haga falta ninguna acción adicional. Al iniciar el proceso, la plataforma también genera un checklist de salida con tareas típicas, como devolver equipos o revocar accesos a otras herramientas.
+
+P: ¿Qué roles de usuario existen?
+R: La plataforma tiene cuatro roles de usuario. El Empleado puede ver y gestionar sus propios datos: solicitar vacaciones, descargar sus recibos y actualizar su perfil personal. El Responsable, además, aprueba o rechaza las solicitudes de ausencia de su equipo y ve el calendario del grupo que le reporta directamente. El Administrador de RR. HH. gestiona altas, bajas, nómina y datos sensibles de todos los empleados. Por último, el Administrador de la cuenta configura ajustes globales como el SSO, la facturación y los planes, y crea otros administradores.
+
+# Sección: Integraciones
+
+P: ¿Con qué herramientas se integra la plataforma?
+R: La plataforma se integra con varias herramientas que las empresas ya suelen usar todos los días, para que la información fluya sin cargar los mismos datos dos veces. Entre las integraciones disponibles están Slack y Microsoft Teams, para recibir notificaciones de solicitudes y aprobaciones directamente en los canales de trabajo, y Google Workspace, para sincronizar cuentas. También se conecta con calendarios externos, mostrando las ausencias aprobadas como eventos. Para empresas con necesidades contables, se conecta con sistemas contables externos a través de una API.
+
+P: ¿Cómo conecto la plataforma con Slack?
+R: Conectar la plataforma con Slack se hace en pocos pasos, sin necesitar ayuda del equipo técnico:
+1. Entrá a Ajustes > Integraciones > Slack.
+2. Hacé clic en Conectar.
+3. Autorizá el acceso desde tu cuenta de Slack.
+4. Elegí el canal donde querés recibir los avisos.
+Una vez completados estos pasos, la integración queda activa de inmediato y empezás a recibir en ese canal las notificaciones de aprobaciones: nuevas solicitudes, aprobaciones, rechazos y recordatorios pendientes.
+
+P: ¿Existe una API pública?
+R: Sí, la plataforma ofrece una API REST pública para empresas que quieren integrar sus propios sistemas internos o construir automatizaciones a medida. Esta funcionalidad está disponible únicamente en el plan Empresa; en los planes Básico y Profesional no aparece habilitada en los ajustes de la cuenta. Para empezar a usarla, un administrador genera un token de acceso desde Ajustes > API, que después se incluye en cada solicitud como credencial. La API tiene un límite de 100 solicitudes por minuto por token; superarlo hace que las solicitudes adicionales se rechacen.
+
+# Sección: Seguridad y privacidad
+
+P: ¿Dónde se almacenan los datos?
+R: Los datos de la plataforma se almacenan en centros de datos ubicados en la Unión Europea, cumpliendo con las normas de protección de datos vigentes en la región. Mientras están guardados, se cifran con AES-256 en reposo, un estándar de cifrado robusto usado ampliamente en la industria. Cuando la información viaja entre tu navegador y los servidores, se protege con TLS 1.3 en tránsito, la versión más moderna de ese protocolo. Además, la plataforma hace copias de seguridad diarias, y esas copias se guardan durante 30 días antes de eliminarse.
+
+P: ¿La plataforma cumple con el RGPD?
+R: Sí, la plataforma cumple con el Reglamento General de Protección de Datos, la normativa europea de protección de datos personales. Como parte de ese cumplimiento, la empresa que contrata la plataforma puede firmar un contrato de encargo de tratamiento, también conocido como DPA, que establece las responsabilidades de cada parte sobre los datos de los empleados. Cuando una persona ejerce sus derechos, como pedir acceso o eliminación de sus datos, la plataforma responde a esas solicitudes de derechos en un plazo máximo de 30 días.
+
+P: ¿Cómo solicito que se eliminen mis datos personales?
+R: Podés solicitar la eliminación de tus datos personales desde Perfil > Privacidad > Solicitar eliminación, completando un formulario breve donde confirmás tu pedido. Una vez enviada la solicitud, RR. HH. la revisa y procede a eliminar la información que ya no necesita conservar por motivos operativos. Sin embargo, existen excepciones legales que impiden borrar cierta información de inmediato: por ejemplo, los recibos se conservan 10 años aunque pidas la eliminación de tus datos, porque existe una obligación legal de conservarlos por ese tiempo.
+
+# Sección: Facturación
+
+P: ¿Qué planes existen y cuánto cuestan?
+R: La plataforma ofrece tres planes según el tamaño y las necesidades de la empresa. El plan Básico cuesta 4 € por empleado al mes e incluye las funciones esenciales de ausencias y nómina. El plan Profesional cuesta 7 € por empleado al mes y suma integraciones como Slack y Google Workspace. El plan Empresa cuesta 11 € por empleado al mes e incluye además el inicio de sesión único y la API pública. En los tres planes, la plataforma exige un mínimo de 10 empleados facturables por cuenta.
+
+P: ¿Cómo cambio de plan o cancelo la suscripción?
+R: Cambiar de plan o cancelar la suscripción es una acción que sólo puede hacer el administrador de la cuenta, desde Facturación > Plan. Si subís de plan, el cambio es inmediato: empezás a usar las nuevas funciones al instante, y el cobro se prorratea según los días que quedan del período actual. Si en cambio decidís cancelar, la cancelación no es inmediata: rige recién al final del período de facturación vigente. Después de la cancelación, tenés 30 días para exportar tus datos antes de que se eliminen.
+
+P: ¿Qué métodos de pago se aceptan?
+R: La plataforma acepta dos métodos de pago principales. El primero es tarjeta de crédito o débito, disponible para cualquier plan y con cobro automático recurrente cada mes o cada año, según la modalidad elegida al contratar. El segundo es transferencia SEPA, pero esta opción sólo está disponible para las empresas que contratan el plan anual, no para el plan mensual. En ambos casos, la plataforma emite la factura correspondiente el día 1 de cada mes, y la deja disponible para descargar desde la sección de Facturación.
