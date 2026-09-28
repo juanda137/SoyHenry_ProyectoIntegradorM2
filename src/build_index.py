@@ -113,6 +113,10 @@ def describir_indice(indice):
 
 def main():
     """Construye el índice desde la línea de comandos."""
+    # Forzamos UTF-8: en Windows, si la salida se redirige a un archivo, Python
+    # usaría la codificación del sistema y las tildes saldrían rotas.
+    sys.stdout.reconfigure(encoding="utf-8")
+    sys.stderr.reconfigure(encoding="utf-8")
     parser = argparse.ArgumentParser(description="Construye el índice de la FAQ.")
     parser.add_argument("--provider", choices=sorted(config.PROVEEDORES), default=None)
     args = parser.parse_args()

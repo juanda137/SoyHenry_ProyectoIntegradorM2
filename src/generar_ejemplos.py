@@ -123,6 +123,7 @@ def generar(cliente, indice):
 def main():
     """Punto de entrada de python -m src.generar_ejemplos"""
     sys.stdout.reconfigure(encoding="utf-8")
+    sys.stderr.reconfigure(encoding="utf-8")
     try:
         cliente = llm_client.crear_cliente()
         indice = query.cargar_indice(config.RUTA_INDICE, cliente)
