@@ -40,9 +40,11 @@ PROVEEDORES = {
     },
     "gemini": {
         "variable_clave": "GEMINI_API_KEY",
-        # gemini-3.5-flash fue el más estable en proyecto_1: gemini-3.7-flash
-        # devolvía HTTP 503 (sobrecarga) seguido.
-        "modelo_chat": "gemini-3.5-flash",
+        # gemini-3.5-flash-lite: se usó porque la capa gratuita de
+        # gemini-3.5-flash se agotó (429 RateLimitError) durante el
+        # desarrollo (ver Tarea 8); flash-lite corrió limpio, sin
+        # reintentos, en ambas corridas reales.
+        "modelo_chat": "gemini-3.5-flash-lite",
         "modelo_embedding": "gemini-embedding-001",
         "base_url": "https://generativelanguage.googleapis.com/v1beta/openai/",
         "donde_conseguir_clave": "https://aistudio.google.com/apikey",
