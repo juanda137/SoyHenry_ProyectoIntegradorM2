@@ -65,6 +65,9 @@ RRF_K = 60                   # amortiguador de RRF; el valor del paper original
 # Calibrado midiendo (Tarea 8, gemini-embedding-001): los chunks que responden
 # las preguntas de ejemplo tienen coseno >= 0.836; la pregunta fuera de alcance
 # no supera 0.5211. El umbral queda entre los dos.
+# Si se cambia de modelo de embeddings (por ejemplo a text-embedding-3-small de
+# OpenAI), la escala del coseno es distinta y este valor hay que recalibrarlo
+# corriendo python -m src.generar_ejemplos con el mismo método A/B.
 SIMILITUD_MINIMA = 0.68
 
 # --- Modelo -----------------------------------------------------------------
@@ -94,9 +97,31 @@ def elegir(valor_de_cli, variable_de_entorno, valor_por_defecto):
     return valor_por_defecto
 
 
+def hay_clave_real(variable_de_entorno):
+    """True si esa variable de entorno tiene una clave real (no vacía, no la de ejemplo)."""
+    valor = os.getenv(variable_de_entorno, "").strip()
+    return valor != "" and valor != CLAVE_DE_EJEMPLO
+
+
+def proveedor_por_defecto():
+    """
+    Sin flag ni LLM_PROVIDER: gemini si hay una clave real de Gemini; si no,
+    openai si hay una clave real de OpenAI; si tampoco, gemini (el proveedor
+    por defecto del proyecto, aunque falte configurar la clave).
+    """
+    if hay_clave_real("GEMINI_API_KEY"):
+        return "gemini"
+    if hay_clave_real("OPENAI_API_KEY"):
+        return "openai"
+    return "gemini"
+
+
 def resolver_proveedor(proveedor=None):
-    """Nombre del proveedor en minúsculas; falla si no está en PROVEEDORES."""
-    proveedor = elegir(proveedor, "LLM_PROVIDER", "gemini").strip().lower()
+    """
+    Nombre del proveedor en minúsculas; falla si no está en PROVEEDORES.
+    Prioridad de siempre: flag de CLI -> variable LLM_PROVIDER -> proveedor_por_defecto().
+    """
+    proveedor = elegir(proveedor, "LLM_PROVIDER", proveedor_por_defecto()).strip().lower()
     if proveedor not in PROVEEDORES:
         raise ErrorDeConfiguracion(
             "Proveedor desconocido: '" + proveedor + "'. Opciones: openai, gemini")
