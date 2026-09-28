@@ -1,0 +1,15 @@
+# Cliente de la API. Sirve para OpenAI y para Gemini: los dos hablan el mismo
+# protocolo (/chat/completions y /embeddings).
+openai==3.19.2
+
+# Carga las variables de entorno desde el archivo .env
+python-dotenv==1.2.3
+
+# Matemática de vectores: la similitud coseno contra todos los chunks de una vez.
+numpy==2.5.3
+
+# Cuenta tokens localmente, para verificar que cada chunk tenga entre 50 y 500.
+tiktoken==0.14.0
+
+# Para correr los tests: python -m pytest tests/ -v
+pytest==9.1.1
