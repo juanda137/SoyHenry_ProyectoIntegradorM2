@@ -418,7 +418,8 @@ como modelo de chat por defecto para el proveedor `gemini`.
 - **Falta el índice, o es de otro modelo de embeddings**: mensaje explicando
   qué correr (`python -m src.build_index`). Embeddings de modelos distintos
   no son comparables entre sí, así que esto se verifica antes de buscar.
-  `main.py` construye el índice solo si todavía no existe.
+  `main.py` construye el índice si todavía no existe, y lo reconstruye si
+  quedó hecho con otro modelo de embeddings.
 - **El proveedor falla** (errores 5xx, timeout, límite de uso): se
   reintenta hasta `REINTENTOS=3` veces, con espera que se duplica en cada
   intento (5s, 10s). Si se agotan los reintentos, el JSON de salida **igual
