@@ -1,6 +1,10 @@
 from types import SimpleNamespace
 
-import httpx
+# openai==3.19.2 depende de httpx2 (un fork propio), no de httpx: si el
+# proyecto no tiene httpx instalado a mano, "import httpx" rompe la
+# recolección de tests en una instalación limpia. Las excepciones de
+# openai aceptan objetos httpx2.Request/Response sin problema.
+import httpx2
 import pytest
 from openai import APIConnectionError, APIStatusError
 
@@ -8,7 +12,7 @@ from src import config, llm_client
 
 
 def pedido_falso():
-    return httpx.Request("POST", "https://ejemplo.test")
+    return httpx2.Request("POST", "https://ejemplo.test")
 
 
 def error_de_red():
@@ -16,7 +20,7 @@ def error_de_red():
 
 
 def error_http(codigo):
-    respuesta = httpx.Response(codigo, request=pedido_falso())
+    respuesta = httpx2.Response(codigo, request=pedido_falso())
     return APIStatusError("error de prueba", response=respuesta, body=None)
 
 
