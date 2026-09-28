@@ -1,0 +1,116 @@
+[
+  {
+    "user_question": "¿Puedo cancelar una solicitud de vacaciones que ya fue aprobada?",
+    "system_answer": "Sí. Podés cancelarla hasta 48 horas antes del inicio, desde Ausencias > Mis solicitudes > Cancelar [chunk 9]. Fuera de ese plazo ya no podés hacerlo por tu cuenta, sino que debés pedírselo al administrador de RR. HH. para que la cancele manualmente [chunk 9].",
+    "chunks_related": [
+      {
+        "id": 9,
+        "seccion": "Vacaciones y ausencias",
+        "texto": "P: ¿Puedo cancelar una solicitud de vacaciones que ya fue aprobada?\nR: Sí, podés cancelarla hasta 48 horas antes del inicio, desde Ausencias > Mis solicitudes > Cancelar. Fuera de ese plazo de 48 horas ya no podés hacerlo directamente por tu cuenta: después hay que pedírselo al administrador de RR. HH., que puede cancelarla manualmente. En cualquiera de los dos casos, los días vuelven al saldo disponible, así que conviene revisar las fechas con anticipación antes de dar por confirmado cualquier cambio de planes personales o familiares.",
+        "similitud": 0.8905
+      },
+      {
+        "id": 7,
+        "seccion": "Vacaciones y ausencias",
+        "texto": "P: ¿Cómo solicito vacaciones?\nR: Solicitar vacaciones es un trámite simple que se hace en pocos pasos:\n1. Entrá a Ausencias > Nueva solicitud.\n2. Elegí el tipo de ausencia.\n3. Indicá las fechas de inicio y fin.\n4. Agregá un comentario, si querés (es opcional).\n5. Enviá la solicitud.\nUna vez enviada, la solicitud queda pendiente hasta que tu responsable directo la revisa y la aprueba o la rechaza. En cualquiera de los dos casos, recibís una notificación por correo avisándote la decisión final.",
+        "similitud": 0.7336
+      },
+      {
+        "id": 11,
+        "seccion": "Vacaciones y ausencias",
+        "texto": "P: ¿Qué pasa si mi responsable no aprueba la solicitud a tiempo?\nR: Si tu responsable no revisa la solicitud enseguida, la plataforma se encarga de recordárselo sola. A las 48 horas de creada la solicitud, si sigue pendiente, le llega un correo de recordatorio automático a tu responsable, sin que vos tengas que pedirlo. Si sigue sin responder, la solicitud no queda esperando para siempre: a los 5 días hábiles sin aprobación, el caso se escala automáticamente al administrador de RR. HH., que puede revisarla y decidir en su lugar, evitando que quede trabada indefinidamente.",
+        "similitud": 0.7019
+      }
+    ]
+  },
+  {
+    "user_question": "¿Cómo configuro el inicio de sesión único (SSO) con Microsoft Entra ID?",
+    "system_answer": "Para configurar el inicio de sesión único (SSO) con Microsoft Entra ID, seguí estos pasos:\n\n1. Ajustes > Seguridad > Inicio de sesión único [chunk 4].\n2. Elegir SAML 2.0 [chunk 4].\n3. Copiar la URL de ACS y el identificador [chunk 4].\n4. En Entra ID, crear una aplicación empresarial y pegarlos [chunk 4].\n5. Subir el XML de metadatos de Entra ID [chunk 4].\n6. Probar con un usuario [chunk 4].\n7. Activar \"Obligar SSO\" [chunk 4].",
+    "chunks_related": [
+      {
+        "id": 4,
+        "seccion": "Cuenta y acceso",
+        "texto": "P: ¿Cómo configuro el inicio de sesión único (SSO) con Microsoft Entra ID?\nR: Configurar el inicio de sesión único es una tarea reservada sólo a administradores de la cuenta, y sólo está disponible en el plan Empresa. Los pasos son estos:\n1. Ajustes > Seguridad > Inicio de sesión único.\n2. Elegir SAML 2.0.\n3. Copiar la URL de ACS y el identificador.\n4. En Entra ID, crear una aplicación empresarial y pegarlos.\n5. Subir el XML de metadatos de Entra ID.\n6. Probar con un usuario.\n7. Activar \"Obligar SSO\".\nUna vez activado ese último paso, todos los usuarios de la cuenta inician sesión exclusivamente a través de Microsoft Entra ID.",
+        "similitud": 0.8782
+      },
+      {
+        "id": 18,
+        "seccion": "Gestión de empleados",
+        "texto": "P: ¿Cómo doy de alta a un nuevo empleado?\nR: Dar de alta a un nuevo empleado es un proceso guiado, paso a paso:\n1. Entrá a Personas > Añadir empleado.\n2. Completá los datos personales, como nombre, correo y documento.\n3. Cargá los datos del contrato: tipo, fecha de inicio y puesto.\n4. Asigná el responsable directo de la persona.\n5. Enviá la invitación.\nApenas se envía, el nuevo empleado recibe un correo con el enlace para activar su cuenta, y ya aparece en Personas con estado pendiente hasta que completa su primer inicio de sesión.",
+        "similitud": 0.5953
+      }
+    ]
+  },
+  {
+    "user_question": "¿Cuántos días de vacaciones pendientes se pueden trasladar al año siguiente?",
+    "system_answer": "Podés trasladar hasta 5 días de vacaciones pendientes al año siguiente [chunk 8].",
+    "chunks_related": [
+      {
+        "id": 8,
+        "seccion": "Vacaciones y ausencias",
+        "texto": "P: ¿Cuántos días de vacaciones pendientes se pueden trasladar al año siguiente?\nR: Podés trasladar hasta 5 días de vacaciones pendientes al año siguiente. Esos días deben usarse antes del 31 de marzo; si no se usan a tiempo, se pierden y no hay forma de recuperarlos después. Es importante recordar que la empresa puede cambiar el límite de traslado en cualquier momento, según su propia política interna, así que conviene revisar las condiciones vigentes cada vez que empieza un año nuevo.",
+        "similitud": 0.9012
+      },
+      {
+        "id": 9,
+        "seccion": "Vacaciones y ausencias",
+        "texto": "P: ¿Puedo cancelar una solicitud de vacaciones que ya fue aprobada?\nR: Sí, podés cancelarla hasta 48 horas antes del inicio, desde Ausencias > Mis solicitudes > Cancelar. Fuera de ese plazo de 48 horas ya no podés hacerlo directamente por tu cuenta: después hay que pedírselo al administrador de RR. HH., que puede cancelarla manualmente. En cualquiera de los dos casos, los días vuelven al saldo disponible, así que conviene revisar las fechas con anticipación antes de dar por confirmado cualquier cambio de planes personales o familiares.",
+        "similitud": 0.6643
+      }
+    ]
+  },
+  {
+    "user_question": "¿En qué formatos puedo exportar los recibos de nómina y cuánto tiempo se conservan?",
+    "system_answer": "Como administrador, podés exportar los recibos de nómina en bloque en CSV o en PDF dentro de un ZIP, mientras que los empleados pueden descargar su propio recibo en PDF [chunk 14].\n\nEn cuanto al tiempo de conservación, los recibos de nómina se conservan durante 10 años desde su fecha de emisión, plazo tras el cual se eliminan automáticamente del sistema [chunk 15].",
+    "chunks_related": [
+      {
+        "id": 15,
+        "seccion": "Nómina",
+        "texto": "P: ¿Cuánto tiempo se conservan los recibos de nómina?\nR: Los recibos de nómina se conservan durante 10 años desde su fecha de emisión, un plazo pensado para cumplir con las obligaciones legales de conservación de documentación laboral. Pasado ese plazo, se eliminan automáticamente del sistema, sin que haga falta ninguna acción manual de RR. HH. En cuanto al acceso posterior a la salida de la empresa, los ex empleados acceden 90 días después de la baja usando las mismas credenciales de siempre; pasado ese plazo, el acceso se cierra definitivamente.",
+        "similitud": 0.8398
+      },
+      {
+        "id": 14,
+        "seccion": "Nómina",
+        "texto": "P: ¿En qué formatos se pueden exportar los recibos de nómina?\nR: En cuanto a los formatos disponibles, el empleado descarga su propio recibo en PDF, mientras que los administradores exportan en bloque en CSV o en PDF dentro de un ZIP. El PDF individual incluye todos los conceptos del recibo, como salario bruto, deducciones y neto a cobrar. El formato CSV en bloque, en cambio, está pensado para cargar los datos de muchos empleados a la vez en otro sistema contable externo, sin tener que abrir cada recibo por separado ni transcribir montos manualmente uno por uno.",
+        "similitud": 0.836
+      },
+      {
+        "id": 13,
+        "seccion": "Nómina",
+        "texto": "P: ¿Dónde descargo mis recibos de nómina?\nR: Podés descargar tus recibos de nómina desde la sección Nómina > Mis recibos, disponible para cualquier empleado desde su propio perfil. Ahí aparece un listado con todos los recibos históricos, ordenados por mes, y podés descargar el que necesites con un solo clic. Los recibos del mes en curso quedan disponibles el último día hábil del mes, una vez que RR. HH. cierra la nómina correspondiente; antes de esa fecha todavía no aparecen en el listado, aunque el mes ya haya terminado.",
+        "similitud": 0.7982
+      },
+      {
+        "id": 27,
+        "seccion": "Seguridad y privacidad",
+        "texto": "P: ¿Cómo solicito que se eliminen mis datos personales?\nR: Podés solicitar la eliminación de tus datos personales desde Perfil > Privacidad > Solicitar eliminación, completando un formulario breve donde confirmás tu pedido. Una vez enviada la solicitud, RR. HH. la revisa y procede a eliminar la información que ya no necesita conservar por motivos operativos. Sin embargo, existen excepciones legales que impiden borrar cierta información de inmediato: por ejemplo, los recibos se conservan 10 años aunque pidas la eliminación de tus datos, porque existe una obligación legal de conservarlos por ese tiempo.",
+        "similitud": 0.7048
+      },
+      {
+        "id": 16,
+        "seccion": "Nómina",
+        "texto": "P: ¿Qué hago si encuentro un error en mi recibo?\nR: Si notás un error en tu recibo de nómina, dentro del propio recibo hay un botón \"Reportar un problema\" donde podés describir qué te parece incorrecto, por ejemplo un descuento que no reconocés. El equipo de RR. HH. recibe el reporte automáticamente y responde en un plazo de 5 días hábiles, ya sea confirmando el error o explicando por qué el monto es correcto. Un recibo ya emitido no se modifica directamente; cualquier corrección se aplica como un ajuste en la nómina siguiente.",
+        "similitud": 0.7135
+      }
+    ]
+  },
+  {
+    "user_question": "¿Cuál es la receta de la paella valenciana?",
+    "system_answer": "No encontré esa información en la documentación. Te sugiero contactar al equipo de soporte.",
+    "chunks_related": [
+      {
+        "id": 17,
+        "seccion": "Nómina",
+        "texto": "P: ¿Cómo cambio mi cuenta bancaria para el pago de la nómina?\nR: Para cambiar la cuenta donde recibís tu nómina, entrá a Perfil > Datos bancarios y cargá el nuevo número en formato IBAN, que la plataforma valida automáticamente antes de guardarlo. Como medida de seguridad, después de guardar el cambio te llega un código de verificación por correo o SMS, que tenés que ingresar para confirmar que fuiste vos quien hizo la modificación. En cuanto a los plazos, los cambios hechos antes del día 20 de cada mes aplican ese mismo mes; los posteriores se aplican en la nómina siguiente.",
+        "similitud": 0.5211
+      },
+      {
+        "id": 15,
+        "seccion": "Nómina",
+        "texto": "P: ¿Cuánto tiempo se conservan los recibos de nómina?\nR: Los recibos de nómina se conservan durante 10 años desde su fecha de emisión, un plazo pensado para cumplir con las obligaciones legales de conservación de documentación laboral. Pasado ese plazo, se eliminan automáticamente del sistema, sin que haga falta ninguna acción manual de RR. HH. En cuanto al acceso posterior a la salida de la empresa, los ex empleados acceden 90 días después de la baja usando las mismas credenciales de siempre; pasado ese plazo, el acceso se cierra definitivamente.",
+        "similitud": 0.5209
+      }
+    ]
+  }
+]

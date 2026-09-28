@@ -1,0 +1,57 @@
+[
+  {
+    "tipo": "si_no",
+    "user_question": "¿Puedo cancelar una solicitud de vacaciones que ya fue aprobada?",
+    "score": 9,
+    "reason": "Puntaje 9 (relevancia 6, fidelidad 10, completitud 10): El chunk 9 es altamente relevante y contiene toda la información necesaria para responder correctamente, mientras que los chunks 7 y 11 no aportan a la pregunta planteada. La respuesta utiliza exclusivamente los datos del chunk 9, logrando una fidelidad y completitud máximas al explicar los plazos y procedimientos.",
+    "dimensiones": {
+      "relevancia": 6,
+      "fidelidad": 10,
+      "completitud": 10
+    }
+  },
+  {
+    "tipo": "como_hacer",
+    "user_question": "¿Cómo configuro el inicio de sesión único (SSO) con Microsoft Entra ID?",
+    "score": 7,
+    "reason": "Puntaje 7 (relevancia 5, fidelidad 10, completitud 7): La relevancia es intermedia porque recupera el chunk 4 que es muy útil pero también incluye el chunk 18 que es irrelevante. La fidelidad es perfecta ya que todo lo que afirma se apoya correctamente en el chunk 4. La completitud es menor al 100% porque omite mencionar las restricciones importantes que figuran en el chunk 4, como que es una tarea exclusiva de administradores y requiere el plan Empresa.",
+    "dimensiones": {
+      "relevancia": 5,
+      "fidelidad": 10,
+      "completitud": 7
+    }
+  },
+  {
+    "tipo": "dato_exacto",
+    "user_question": "¿Cuántos días de vacaciones pendientes se pueden trasladar al año siguiente?",
+    "score": 7,
+    "reason": "Puntaje 7 (relevancia 5, fidelidad 10, completitud 7): El chunk 8 aborda directamente la pregunta sobre el traslado de vacaciones, mientras que el chunk 9 es irrelevante. La respuesta es completamente fiel al chunk 8 al mencionar el límite de 5 días, pero está incompleta porque omite la fecha límite del 31 de marzo y la posible modificación de la política informada en ese mismo chunk.",
+    "dimensiones": {
+      "relevancia": 5,
+      "fidelidad": 10,
+      "completitud": 7
+    }
+  },
+  {
+    "tipo": "dos_partes",
+    "user_question": "¿En qué formatos puedo exportar los recibos de nómina y cuánto tiempo se conservan?",
+    "score": 10,
+    "reason": "Puntaje 10 (relevancia 10, fidelidad 10, completitud 10): La respuesta utiliza de forma correcta los chunks 14 y 15 para responder con precisión sobre ambos aspectos consultados, abarcando los formatos de exportación y el tiempo de conservación sin omitir detalles relevantes ni inventar información.",
+    "dimensiones": {
+      "relevancia": 10,
+      "fidelidad": 10,
+      "completitud": 10
+    }
+  },
+  {
+    "tipo": "fuera_de_alcance",
+    "user_question": "¿Cuál es la receta de la paella valenciana?",
+    "score": 7,
+    "reason": "Puntaje 7 (relevancia 0, fidelidad 10, completitud 10): Los chunks 17 y 15 tratan sobre nómina y datos bancarios, por lo que no guardan relación con la receta de la paella valenciana. La respuesta es completamente honesta al indicar que no encontró la información y sugerir soporte, cumpliendo con la fidelidad y completitud ante la falta de datos pertinentes en la documentación.",
+    "dimensiones": {
+      "relevancia": 0,
+      "fidelidad": 10,
+      "completitud": 10
+    }
+  }
+]

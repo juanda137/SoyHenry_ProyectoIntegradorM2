@@ -60,7 +60,10 @@ TOP_K_MIN = 2                # la rúbrica pide devolver entre 2 y 5 chunks
 TOP_K_MAX = 5
 CANDIDATOS_POR_METODO = 10   # cuántos aporta cada método antes de fusionar
 RRF_K = 60                   # amortiguador de RRF; el valor del paper original
-SIMILITUD_MINIMA = 0.60      # PROVISIONAL: se calibra midiendo en la Tarea 8
+# Calibrado midiendo (Tarea 8, gemini-embedding-001): los chunks que responden
+# las preguntas de ejemplo tienen coseno >= 0.836; la pregunta fuera de alcance
+# no supera 0.5211. El umbral queda entre los dos.
+SIMILITUD_MINIMA = 0.68
 
 # --- Modelo -----------------------------------------------------------------
 TEMPERATURA_RESPUESTA = 0.2  # baja: queremos fidelidad al texto, no creatividad

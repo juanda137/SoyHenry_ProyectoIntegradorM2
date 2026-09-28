@@ -1,0 +1,165 @@
+{
+  "similitud_minima": 0.68,
+  "promedio_porcentaje_con_palabras_clave": {
+    "knn": 100.0,
+    "hibrida": 100.0
+  },
+  "por_pregunta": [
+    {
+      "knn": {
+        "chunks_devueltos": 3,
+        "ids": [
+          9,
+          7,
+          11
+        ],
+        "similitudes": [
+          0.8905,
+          0.7336,
+          0.7019
+        ],
+        "porcentaje_con_palabras_clave": 100.0
+      },
+      "hibrida": {
+        "chunks_devueltos": 3,
+        "ids": [
+          9,
+          7,
+          11
+        ],
+        "similitudes": [
+          0.8905,
+          0.7336,
+          0.7019
+        ],
+        "porcentaje_con_palabras_clave": 100.0
+      },
+      "tipo": "si_no",
+      "pregunta": "¿Puedo cancelar una solicitud de vacaciones que ya fue aprobada?"
+    },
+    {
+      "knn": {
+        "chunks_devueltos": 2,
+        "ids": [
+          4,
+          2
+        ],
+        "similitudes": [
+          0.8782,
+          0.6203
+        ],
+        "porcentaje_con_palabras_clave": 100.0
+      },
+      "hibrida": {
+        "chunks_devueltos": 2,
+        "ids": [
+          4,
+          18
+        ],
+        "similitudes": [
+          0.8782,
+          0.5953
+        ],
+        "porcentaje_con_palabras_clave": 100.0
+      },
+      "tipo": "como_hacer",
+      "pregunta": "¿Cómo configuro el inicio de sesión único (SSO) con Microsoft Entra ID?"
+    },
+    {
+      "knn": {
+        "chunks_devueltos": 2,
+        "ids": [
+          8,
+          9
+        ],
+        "similitudes": [
+          0.9012,
+          0.6643
+        ],
+        "porcentaje_con_palabras_clave": 100.0
+      },
+      "hibrida": {
+        "chunks_devueltos": 2,
+        "ids": [
+          8,
+          9
+        ],
+        "similitudes": [
+          0.9012,
+          0.6643
+        ],
+        "porcentaje_con_palabras_clave": 100.0
+      },
+      "tipo": "dato_exacto",
+      "pregunta": "¿Cuántos días de vacaciones pendientes se pueden trasladar al año siguiente?"
+    },
+    {
+      "knn": {
+        "chunks_devueltos": 5,
+        "ids": [
+          15,
+          14,
+          13,
+          16,
+          27
+        ],
+        "similitudes": [
+          0.8398,
+          0.836,
+          0.7982,
+          0.7135,
+          0.7048
+        ],
+        "porcentaje_con_palabras_clave": 100.0
+      },
+      "hibrida": {
+        "chunks_devueltos": 5,
+        "ids": [
+          15,
+          14,
+          13,
+          27,
+          16
+        ],
+        "similitudes": [
+          0.8398,
+          0.836,
+          0.7982,
+          0.7048,
+          0.7135
+        ],
+        "porcentaje_con_palabras_clave": 100.0
+      },
+      "tipo": "dos_partes",
+      "pregunta": "¿En qué formatos puedo exportar los recibos de nómina y cuánto tiempo se conservan?"
+    },
+    {
+      "knn": {
+        "chunks_devueltos": 2,
+        "ids": [
+          17,
+          15
+        ],
+        "similitudes": [
+          0.5211,
+          0.5209
+        ],
+        "porcentaje_con_palabras_clave": 0.0
+      },
+      "hibrida": {
+        "chunks_devueltos": 2,
+        "ids": [
+          17,
+          15
+        ],
+        "similitudes": [
+          0.5211,
+          0.5209
+        ],
+        "porcentaje_con_palabras_clave": 0.0
+      },
+      "tipo": "fuera_de_alcance",
+      "pregunta": "¿Cuál es la receta de la paella valenciana?"
+    }
+  ]
+}
