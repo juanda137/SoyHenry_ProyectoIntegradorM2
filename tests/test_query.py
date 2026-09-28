@@ -1,9 +1,15 @@
+import argparse
 import json
 
 import pytest
 
 from src import busqueda, llm_client, query
 from tests.ayudantes import chunks_falsos
+
+
+def args_falsos(pregunta=None):
+    return argparse.Namespace(pregunta=pregunta, provider=None, model=None,
+                              metodo="hibrida", evaluar=False)
 
 
 def cliente_falso():
@@ -86,3 +92,17 @@ def test_dimension_distinta_da_error(monkeypatch):
     monkeypatch.setattr(llm_client, "embeber_textos", lambda cliente, textos: [[1.0, 0.0, 0.0]])
     with pytest.raises(query.ErrorDeIndice):
         query.embeber_pregunta(cliente_falso(), "¿Hola?", 2)
+
+
+def test_sin_pregunta_y_sin_entrada_da_un_error_claro(monkeypatch, capsys):
+    # Sin --pregunta y con la entrada estándar cerrada (por ejemplo, corriendo
+    # el programa con la entrada redirigida desde /dev/null): input() levanta
+    # EOFError en vez de colgarse esperando texto que nunca va a llegar.
+    def input_sin_entrada():
+        raise EOFError()
+
+    monkeypatch.setattr("builtins.input", input_sin_entrada)
+    assert query.ejecutar_consulta(args_falsos(pregunta=None)) == 2
+    salida = capsys.readouterr()
+    assert "Tu pregunta: " in salida.err
+    assert salida.out == ""

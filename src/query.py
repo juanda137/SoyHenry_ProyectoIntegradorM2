@@ -142,14 +142,21 @@ def ejecutar_consulta(args):
     try:
         pregunta = args.pregunta
         if pregunta is None:
-            pregunta = input("Tu pregunta: ")
+            # El prompt va por stderr: si no se escribe nada acá, stdout queda
+            # sólo con el JSON final, aunque la pregunta se haya tipeado a mano.
+            print("Tu pregunta: ", end="", file=sys.stderr, flush=True)
+            pregunta = input()
         pregunta = validar_pregunta(pregunta)
         cliente = llm_client.crear_cliente(args.provider, args.model)
         indice = cargar_indice(config.RUTA_INDICE, cliente)
         preparada = busqueda.preparar_busqueda(indice["chunks"])
         salida, error = responder(cliente, preparada, indice["dimension"], pregunta, args.metodo)
-    except (ValueError, config.ErrorDeConfiguracion, ErrorDeIndice) as problema:
-        print("Error: " + str(problema), file=sys.stderr)
+    except (ValueError, config.ErrorDeConfiguracion, ErrorDeIndice, EOFError) as problema:
+        # EOFError: no hay pregunta ni entrada estándar (por ejemplo, stdin
+        # redirigida desde /dev/null); sin esto, input() la dejaría escapar
+        # como traceback en vez de un error prolijo.
+        mensaje = "No se recibió ninguna pregunta." if isinstance(problema, EOFError) else str(problema)
+        print("Error: " + mensaje, file=sys.stderr)
         return 2
     print(json.dumps(salida, ensure_ascii=False, indent=2))
     mostrar_diagnostico(salida, args.metodo)
