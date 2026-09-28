@@ -69,3 +69,23 @@ def test_si_no_puede_evaluar_no_inventa_un_puntaje(monkeypatch):
     resultado = evaluador.evaluar_respuesta({"modelo_evaluador": "juez"}, salida_de_ejemplo())
     assert resultado["score"] is None
     assert len(resultado["reason"]) >= 50
+
+
+def test_json_truncado_por_max_tokens_reintenta_con_otra_temperatura(monkeypatch):
+    # Forma real vista en la Tarea 8 (gemini-3.5-flash, temperatura 0): el
+    # razonamiento se come el presupuesto de tokens y el JSON queda cortado
+    # antes de llegar a "reason".
+    truncado = '{\n  "relevancia": 5,\n  "fidelidad": 10,\n  "completitud": 10,'
+    temperaturas_usadas = []
+
+    def preguntar_falso(cliente, mensajes, modelo, temperatura, formato_json=False):
+        temperaturas_usadas.append(temperatura)
+        if len(temperaturas_usadas) == 1:
+            return truncado
+        return evaluacion_en_json()
+
+    monkeypatch.setattr(llm_client, "preguntar", preguntar_falso)
+    resultado = evaluador.evaluar_respuesta({"modelo_evaluador": "juez"}, salida_de_ejemplo())
+    assert resultado["score"] == 8
+    assert len(temperaturas_usadas) == 2
+    assert temperaturas_usadas[0] != temperaturas_usadas[1]

@@ -25,6 +25,13 @@ DIMENSIONES = ["relevancia", "fidelidad", "completitud"]
 FIDELIDAD_MINIMA = 5
 LARGO_MINIMO_RAZON = 50
 INTENTOS = 2   # si el juez responde algo inválido, se le pregunta una vez más
+# Diagnóstico (Tarea 8): con TEMPERATURA_EVALUADOR (0) el juez "piensa" antes
+# de escribir el JSON, y esos tokens de razonamiento a veces se comen casi
+# todo max_tokens: el texto queda cortado, por ejemplo
+#   '{\n  "relevancia": 5,\n  "fidelidad": 10,\n  "completitud": 10,'
+# A temperatura 0 esto es determinístico: reintentar con la misma pregunta
+# repite el mismo corte. Por eso el reintento usa otra temperatura.
+TEMPERATURA_DE_REINTENTO = 0.4
 
 
 def armar_mensajes(salida):
@@ -74,9 +81,10 @@ def evaluar_respuesta(cliente, salida):
     """Devuelve {"score", "reason", "dimensiones"}. Si no puede evaluar, score es None."""
     ultimo_problema = ""
     for intento in range(INTENTOS):
+        temperatura = config.TEMPERATURA_EVALUADOR if intento == 0 else TEMPERATURA_DE_REINTENTO
         try:
             texto = llm_client.preguntar(cliente, armar_mensajes(salida), cliente["modelo_evaluador"],
-                                         config.TEMPERATURA_EVALUADOR, formato_json=True)
+                                         temperatura, formato_json=True)
             evaluacion = interpretar_evaluacion(texto)
         except (ValueError, llm_client.ErrorDelModelo) as problema:
             ultimo_problema = str(problema)
